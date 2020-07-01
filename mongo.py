@@ -24,6 +24,9 @@ vacancies_hh.delete_many( { } )
 vacancies_hh.insert_many(vacancies_hh_list)
 print(vacancies_hh.count_documents({}))
 
+
+#Select vacancies with exact salary
+
 wish_salary = 13000
 
 suitable_vacations = []
@@ -57,13 +60,12 @@ for v in vacancies_hh.find({}):
     #if v['min_salary'] == '' and v['min_salary'] == '' : suitable_vacations.append(v)
 
 
-# print(vacancies_hh.count_documents({}))
-
+# Delete from db documents with vacancy name 'Data scientist'
 vacancies_hh.delete_many({'name':'Data scientist'})
 
 print(vacancies_hh.count_documents({}))
 
-
+# Function for create only new docs in db
 for v in vacancies_hh_list:
     if vacancies_hh.count_documents({
         'name': v['name'],
@@ -98,5 +100,4 @@ for v in vacancies_hh_list:
 
 print(vacancies_hh.count_documents({}))
 
-print(1)
 
